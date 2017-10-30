@@ -13,12 +13,12 @@ This image allows you to run `docker system prune` within your Swarm cluster to 
 ## With Service Command
 
 ```bash
-docker \
-  service create --name docker-system-prune \
+docker service create \
+    --name docker-system-prune \
     --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
     --mode global \
     --restart-delay 86400s \
-    servivum/docker-system-prune 
+    servivum/docker-system-prune
 ```
 
 The command runs the container once per node in the Swarm cluster (`--mode global`), restarts it every day (`--restart-delay 86400s`).
