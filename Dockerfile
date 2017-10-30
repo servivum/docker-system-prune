@@ -1,6 +1,6 @@
-FROM docker:1.13.1
+FROM docker:17.10
 
-MAINTAINER Basilio Vera <basilio.vera@softonic.com>
+LABEL maintainer "Patrick Baber <patrick.baber@servivum.com>"
 
 ARG "version=0.1.0-dev"
 ARG "build_date=unknown"
