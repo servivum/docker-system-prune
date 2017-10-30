@@ -1,0 +1,11 @@
+version: "3.3"
+
+services:
+  docker-system-prune:
+    image: servivum/docker-system-prune
+    deploy:
+      mode: global
+      restart_policy:
+        delay: 86400s
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

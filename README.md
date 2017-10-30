@@ -1,14 +1,16 @@
 # Docker System Prune
 
-Executes the `docker system prune` command to allow automatize its execution.
+This image allows you to run `docker system prune` within your Swarm cluster to cleanup your Docker hosts.
+
+# Requirements
+
+- Docker (>= 17.10)
+- Docker Swarm Mode
+- Mounted Docker socket
 
 # Usage
 
-This image allows you to program automatically when a prune will be done in your hosts.
-
-The main advantage over external solutions like a cron job is that you can launch it in a cluster easily: "fire & forget"
-
-For example in a Swarm mode cluster:
+## With Service Command
 
 ```bash
 docker \
@@ -16,15 +18,17 @@ docker \
     --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
     --mode global \
     --restart-delay 86400s \
-    --restart-max-attempts 3650 \
-    softonic/docker-system-prune 
+    servivum/docker-system-prune 
 ```
 
-This would launch the "prune" command in all the nodes in the cluster once a day, more or less, during 10 years.
+The command runs the container once per node in the Swarm cluster (`--mode global`), restarts it every day (`--restart-delay 86400s`).
 
-!!! info
-         You need to mount the docker socket to allow the command to be executed in the host.
+Notice: The Docker socket is necessary for the Docker CLI to execute the command in the host.
 
-# Requirements
+## With Stack File
 
-As it executes the `docker system prune` command this can work only in nodes with Docker versions `>=1.13`
+Same as above, but the service is defined in the stack file format. Copy the stack file to the Swarm manager run the command.
+
+```bash
+docker stack deploy -c docker-compose.yml docker-system-prune
+```
