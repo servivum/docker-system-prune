@@ -27,7 +27,7 @@ Notice: The Docker socket is necessary for the Docker CLI to execute the command
 
 ## With Stack File
 
-Same as above, but the service is defined in the stack file format. Copy the stack file to the Swarm manager run the command.
+Same as above, but the service is defined in the stack file format. Copy the stack file to the Swarm manager and run the command.
 
 ```bash
 docker stack deploy -c docker-compose.yml docker-system-prune
