@@ -4,7 +4,7 @@ This image allows you to run `docker system prune` within your Swarm cluster to 
 
 # Requirements
 
-- Docker (>= 17.10)
+- Docker (>= 18.03)
 - Docker Swarm Mode
 - Mounted Docker socket
 
