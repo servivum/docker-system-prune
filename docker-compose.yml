@@ -7,5 +7,6 @@ services:
       mode: global
       restart_policy:
         delay: 86400s
+        max_attempts: 3650
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

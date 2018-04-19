@@ -18,6 +18,7 @@ docker service create \
     --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
     --mode global \
     --restart-delay 86400s \
+    --restart-max-attempts 3650 \
     servivum/docker-system-prune
 ```
 
